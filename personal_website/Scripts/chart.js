@@ -5,9 +5,13 @@ var width = 1680,
 
 var maxNodes = 100;
 
-var counter = 0;
+var color = d3.scale.category20();
 
-var fill = d3.scale.category20();
+var sizeScale = d3.scale.linear()
+    .domain([0, 1])
+    .range([1, 25]);
+
+var counter = 0;
 
 var force = d3.layout.force()
     .size([width, height])
@@ -20,28 +24,19 @@ var force = d3.layout.force()
 var svg = d3.select("#chart").append("svg")
     .attr("width", width)
     .attr("height", height)
+    .attr("class", "BuGn")
     .on("mousemove", mousemove)
     .on("mousedown", mousedown);
-
-//svg.append("rect")
-//    .attr("width", width)
-//    .attr("height", height);
 
 var nodes = force.nodes(),
     links = force.links(),
     node = svg.selectAll(".node");
-
-//var cursor = svg.append("circle")
-//    .attr("r", 30)
-//    .attr("transform", "translate(-100,-100)")
-//    .attr("class", "cursor");
 
 var pos;
 
 restart();
 
 function mousemove() {
-    //cursor.attr("transform", "translate(" + d3.mouse(this) + ")");
     pos = d3.mouse(this);
 }
 
@@ -50,26 +45,12 @@ function mousedown() {
         node = {x: point[0], y: point[1]},
         n = nodes.push(node);
 
-    // add links to any nearby nodes
-    //nodes.forEach(function(target) {
-    //    var x = target.x - node.x,
-    //        y = target.y - node.y;
-    //    if (Math.sqrt(x * x + y * y) < 30) {
-    //        links.push({source: node, target: target});
-    //    }
-    //});
-
     restart();
 }
 
 setInterval(function () {
-
-    console.log(pos);
-
-    //var node = {x: pos[0], y: pos[1]},
-    //        n = nodes.push(node);
     
-    var node = { x: pos[0], y: pos[1] };
+    var node = { x: pos[0], y: pos[1], r: [sizeScale(Math.random())] };
     nodes[counter % maxNodes] = node;
 
     counter = counter + 1;
@@ -84,16 +65,14 @@ function tick() {
 }
 
 function restart() {
-    //link = link.data(links);
-
-    //link.enter().insert("line", ".node")
-    //    .attr("class", "link");
 
     node = node.data(nodes);
 
     node.enter().insert("circle", ".cursor")
         .attr("class", "node")
-        .attr("r", 5)
+        //.attr("r", 5)
+        .attr("r", function (d, i) { return d.r; })
+        .attr("fill",function(d,i){return color(i);})
         .call(force.drag);
 
     force.start();

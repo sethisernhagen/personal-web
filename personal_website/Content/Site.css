@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
 
 }
 
@@ -40,10 +40,6 @@ footer{
     position: absolute;
     bottom: 0;
     left: 10px;
-}
-
-.node {
-  fill: #000;
 }
 
 svg {
