@@ -9,7 +9,15 @@ var color = d3.scale.category20();
 
 var sizeScale = d3.scale.linear()
     .domain([0, 1])
-    .range([1, 25]);
+    .range([1, 100]);
+
+var strokeWidthScale = d3.scale.linear()
+    .domain([0, 1])
+    .range([1, 50]);
+
+var alphaScale = d3.scale.linear()
+    .domain([0, 1])
+    .range([.01, 1]);
 
 var counter = 0;
 
@@ -24,7 +32,6 @@ var force = d3.layout.force()
 var svg = d3.select("#chart").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("class", "BuGn")
     .on("mousemove", mousemove)
     .on("mousedown", mousedown);
 
@@ -50,7 +57,14 @@ function mousedown() {
 
 setInterval(function () {
     
-    var node = { x: pos[0], y: pos[1], r: [sizeScale(Math.random())] };
+    var node = {
+        x: pos[0],
+        y: pos[1],
+        r: [sizeScale(Math.random())],
+        alpha: [alphaScale(Math.random())],
+        strokeWidth: [strokeWidthScale(Math.random())],
+        strokeAlpha: [alphaScale(Math.random())]
+    };
     nodes[counter % maxNodes] = node;
 
     counter = counter + 1;
@@ -70,9 +84,12 @@ function restart() {
 
     node.enter().insert("circle", ".cursor")
         .attr("class", "node")
-        //.attr("r", 5)
         .attr("r", function (d, i) { return d.r; })
-        .attr("fill",function(d,i){return color(i);})
+        .attr("fill", function (d, i) { return color(i); })
+        .attr("stroke", function (d, i) { return color(i); })
+        .attr("stroke-width", function (d, i) { return d.strokeWidth })
+        .attr("stroke-opacity", function (d, i) { return d.strokeAlpha; })
+        .attr("fill-opacity", function (d, i) { return d.alpha; })
         .call(force.drag);
 
     force.start();
