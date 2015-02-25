@@ -1,7 +1,7 @@
 ﻿
 
-var width = 1680,
-    height = 1280;
+var width = window.innerWidth
+    height = window.innerHeight;
 
 var maxNodes = 100;
 
@@ -13,7 +13,7 @@ var sizeScale = d3.scale.linear()
 
 var strokeWidthScale = d3.scale.linear()
     .domain([0, 1])
-    .range([1, 50]);
+    .range([0, 100]);
 
 var alphaScale = d3.scale.linear()
     .domain([0, 1])
@@ -32,8 +32,7 @@ var force = d3.layout.force()
 var svg = d3.select("#chart").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .on("mousemove", mousemove)
-    .on("mousedown", mousedown);
+    .on("mousemove", mousemove);
 
 var nodes = force.nodes(),
     links = force.links(),
@@ -41,19 +40,28 @@ var nodes = force.nodes(),
 
 var pos;
 
-restart();
+//restart();
+
+//window.addEventListener('resize', resizeCanvas, false);
+
+//function resizeCanvas() {
+
+//    width = window.innerWidth;
+//    height = window.innerHeight;
+//}
+
 
 function mousemove() {
     pos = d3.mouse(this);
 }
 
-function mousedown() {
-    var point = d3.mouse(this),
-        node = {x: point[0], y: point[1]},
-        n = nodes.push(node);
+//function mousedown() {
+//    var point = d3.mouse(this),
+//        node = {x: point[0], y: point[1]},
+//        n = nodes.push(node);
 
-    restart();
-}
+//    restart();
+//}
 
 setInterval(function () {
     
