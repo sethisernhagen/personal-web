@@ -1,7 +1,7 @@
 ﻿
 
 var width = window.innerWidth
-    height = window.innerHeight;
+    height = window.innerHeight - 50;
 
 var maxNodes = 100;
 
@@ -13,7 +13,7 @@ var sizeScale = d3.scale.linear()
 
 var strokeWidthScale = d3.scale.linear()
     .domain([0, 1])
-    .range([0, 100]);
+    .range([1, 50]);
 
 var alphaScale = d3.scale.linear()
     .domain([0, 1])
@@ -23,14 +23,14 @@ var counter = 0;
 
 var force = d3.layout.force()
     .size([width, height])
-    .nodes([{}]) // initialize with a single node
+    .nodes([{}])
     .linkDistance(30)
     .charge(-60)
     .gravity(0)
     .on("tick", tick);
 
 var svg = d3.select("#chart").append("svg")
-    .attr("width", width)
+    .attr("width", "100%")
     .attr("height", height)
     .on("mousemove", mousemove);
 
@@ -38,36 +38,18 @@ var nodes = force.nodes(),
     links = force.links(),
     node = svg.selectAll(".node");
 
-var pos;
-
-//restart();
-
-//window.addEventListener('resize', resizeCanvas, false);
-
-//function resizeCanvas() {
-
-//    width = window.innerWidth;
-//    height = window.innerHeight;
-//}
-
+//default node position to canvas center
+var pos = [width / 2, height /2];
 
 function mousemove() {
     pos = d3.mouse(this);
 }
 
-//function mousedown() {
-//    var point = d3.mouse(this),
-//        node = {x: point[0], y: point[1]},
-//        n = nodes.push(node);
-
-//    restart();
-//}
-
 setInterval(function () {
     
     var node = {
-        x: pos[0],
-        y: pos[1],
+        x: pos[0] + Math.random(), //randomize pos a tiny amount to keep things calm 
+        y: pos[1] + Math.random(),
         r: [sizeScale(Math.random())],
         alpha: [alphaScale(Math.random())],
         strokeWidth: [strokeWidthScale(Math.random())],
@@ -78,7 +60,7 @@ setInterval(function () {
     counter = counter + 1;
     
     restart();
-}, 50);
+}, 100);
 
 function tick() {
 
