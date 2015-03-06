@@ -45,3 +45,24 @@ footer{
 svg {
     fill: #fff;
 }
+
+.contact-item{
+    width: 100%;
+    padding: 2px 0 2px 24px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /*margin-left: 10px;*/
+}
+
+.contact-item-icon{
+    /*float: left;*/
+    width: 16px;
+    text-align: center;
+    margin-left: -24px;
+    color: #ccc;
+}
+
+.contact-item-link{
+    margin-left:10px;
+}

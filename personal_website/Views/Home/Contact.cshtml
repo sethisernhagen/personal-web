@@ -3,9 +3,22 @@
 }
 <div class="container">
     <div class="row">
-        <h2>@ViewBag.Title</h2>
-        <p><a href="https://www.linkedin.com/in/sethisernhagen" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i>LinkedIn</a></p>
-        <p><a href="https://github.com/sethisernhagen" target="_blank"><i class="fa fa-github fa-2x"></i>GitHub</a></p>
+        <div class="col-md-4">
+            <h2>@ViewBag.Title</h2>
+            <p>Please feel free to contact me.</p>
+            <ul>
+                <li class="contact-item"><span class="fa fa-envelope-o fa-lg contact-item-icon"></span><a class="contact-item-link" href="mailto:sisernhagen@gmail.com">sisernhagen@gmail.com</a></li>
+            </ul>
+            <ul>
+                <li class="contact-item"><span class="fa fa-linkedin-square fa-lg contact-item-icon"></span><a class="contact-item-link" href="https://www.linkedin.com/in/sethisernhagen" target="_blank">LinkedIn</a></li>
+            </ul>
+            <ul>
+                <li class="contact-item"><span class="fa fa-github fa-lg contact-item-icon"></span><a class="contact-item-link" href="https://github.com/sethisernhagen" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+        <div class="col-md-8 text-left" id="static-bubble">
+            <img src="~/Content/images/static_bubbles2.png" />
+        </div>
     </div>
 </div>
 <script>
