@@ -5,6 +5,10 @@
     font-size: 18px;
 }
 
+footer{
+    font-size: 14px;
+}
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Pontano Sans", Verdana, Helvetica, sans-serif;
 }
@@ -13,12 +17,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-size: 28px;
 }
 
-.navbar-nav {
-    float: right;
-}
+.navbar-collapse.collapse {
+    float:left;
+  }
 
 .navbar-inverse .navbar-nav > li > a {
     font-size: 22px;
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse.collapse {
+    float:right;
+  }
 }
 
 .content{
