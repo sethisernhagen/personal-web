@@ -60,7 +60,7 @@ setInterval(function () {
     counter = counter + 1;
     
     restart();
-}, 100);
+}, 275);
 
 function tick() {
 
