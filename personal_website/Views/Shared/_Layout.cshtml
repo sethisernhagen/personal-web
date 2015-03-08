@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using personal_website.Helpers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.png")">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -23,9 +26,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="@Url.MakeActiveClassAction("About")">@Html.ActionLink("About", "About", "Home")</li>
                     @*<li>@Html.ActionLink("Work", "About", "Home")</li>*@
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="@Url.MakeActiveClassAction("Contact")">@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
