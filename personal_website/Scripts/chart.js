@@ -24,7 +24,6 @@ var counter = 0;
 var force = d3.layout.force()
     .size([width, height])
     .nodes([{}])
-    .linkDistance(30)
     .charge(-60)
     .gravity(0)
     .on("tick", tick);
@@ -32,7 +31,9 @@ var force = d3.layout.force()
 var svg = d3.select("#chart").append("svg")
     .attr("width", "100%")
     .attr("height", height)
-    .on("mousemove", mousemove);
+    .on("mousemove", mousemove)
+    .on("mousedown", mousedown)
+    .on("mouseup", mouseup);
 
 var nodes = force.nodes(),
     links = force.links(),
@@ -43,6 +44,23 @@ var pos = [width / 2, height /2];
 
 function mousemove() {
     pos = d3.mouse(this);
+}
+
+function mousedown() {
+
+    // Restart the force layout.
+    force.charge(60)
+        .gravity(1)
+        .start();
+}
+
+
+function mouseup() {
+
+    // Restart the force layout.
+    force.charge(-60)
+        .gravity(0)
+        .start();
 }
 
 setInterval(function () {
