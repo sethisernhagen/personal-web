@@ -49,8 +49,9 @@ function mousemove() {
 function mousedown() {
 
     // Restart the force layout.
-    force.charge(60)
-        .gravity(1)
+    force.charge(1)
+        .gravity(.2)
+        .friction(.9)
         .start();
 }
 
@@ -60,6 +61,7 @@ function mouseup() {
     // Restart the force layout.
     force.charge(-60)
         .gravity(0)
+        .friction(.9)
         .start();
 }
 
