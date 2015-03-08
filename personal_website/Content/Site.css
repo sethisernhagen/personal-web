@@ -1,28 +1,25 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: "Pontano Sans", Verdana, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    /*padding-left: 15px;
-    padding-right: 15px;*/
-
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Pontano Sans", Verdana, Helvetica, sans-serif;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-/*.dl-horizontal dt {
-    white-space: normal;
-}*/
+.navbar-brand {
+    font-size: 28px;
+}
 
-/* Set width on the form input elements since they're 100% wide by default */
-/*input,
-select,
-textarea {
-    max-width: 280px;
-}*/
+.navbar-nav {
+    float: right;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 22px;
+}
 
 .content{
     width: 100%;
@@ -56,7 +53,6 @@ svg {
 }
 
 .contact-item-icon{
-    /*float: left;*/
     width: 16px;
     text-align: center;
     margin-left: -24px;
@@ -66,3 +62,4 @@ svg {
 .contact-item-link{
     margin-left:10px;
 }
+
