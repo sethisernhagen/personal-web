@@ -1,12 +1,12 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    font-family: "Pontano Sans", Verdana, Helvetica, sans-serif;
-    font-size: 18px;
+﻿html{
+        height:100%;
 }
 
-footer{
-    font-size: 14px;
+body {
+    padding-top: 50px;
+    font-family: "Pontano Sans", Verdana, Helvetica, sans-serif;
+    font-size: 18px;
+    height:100%;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -27,12 +27,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .navbar-inverse .navbar-nav > li > a {
     font-size: 22px;
-    
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-/*color: #ffffff;*/
-background-color: black;
+    background-color: black;
 }
 
 @media (min-width: 768px) {
@@ -53,14 +51,9 @@ background-color: black;
     overflow: hidden;
 }
 
-footer{
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-}
-
 svg {
     fill: #fff;
+    z-index: -1;
 }
 
 .contact-item{
@@ -69,7 +62,6 @@ svg {
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    /*margin-left: 10px;*/
 }
 
 .contact-item-icon{
@@ -81,5 +73,54 @@ svg {
 
 .contact-item-link{
     margin-left:10px;
+}
+
+.bubble-background{
+    position: absolute;
+    right: 0px;
+    z-index: -1;
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+.text-background {
+    background-color: #ffffff;
+    z-index:-1;
+    background-color:rgba(255,255,255,0.9);
+    padding: 10px; 
+}
+
+.text-block{
+    color: #000000;
+    opacity: 1;
+    margin: 5px;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -30px;
+}
+
+#push, #footer {
+    height: 60px;
+}
+
+.footer{
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+#absolute-footer{
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    height:30px;
+}
+
+#chart{
+    height:100%;
+    z-index: -1;
 }
 

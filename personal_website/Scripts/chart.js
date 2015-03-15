@@ -1,7 +1,7 @@
 ﻿
 
 var width = window.innerWidth
-    height = window.innerHeight - 50;
+    height = window.innerHeight - 55;
 
 var maxNodes = 100;
 
